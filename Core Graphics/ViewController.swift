@@ -48,7 +48,7 @@ class ViewController: UIViewController {
     imageView.image = image
   }
 
-  private func   drawCheckerboard() {
+  private func drawCheckerboard() {
     let renderer = UIGraphicsImageRenderer(size: CGSize(width: 512, height: 512))
     let image = renderer.image { context in
       context.cgContext.setFillColor(UIColor.black.cgColor)
@@ -59,6 +59,44 @@ class ViewController: UIViewController {
           }
         }
       }
+    }
+    imageView.image = image
+  }
+
+  private func drawRotatedSquares() {
+    let renderer = UIGraphicsImageRenderer(size: CGSize(width: 512, height: 512))
+    let image = renderer.image { context in
+      context.cgContext.translateBy(x: 256, y: 256)
+      let rotations = 16
+      let amount = Double.pi / Double(rotations)
+      for _ in 0 ..< rotations {
+        context.cgContext.rotate(by: CGFloat(amount))
+        context.cgContext.addRect(CGRect(x: -128, y: -128, width: 256, height: 256))
+      }
+      context.cgContext.setStrokeColor(UIColor.black.cgColor)
+      context.cgContext.strokePath()
+    }
+    imageView.image = image
+  }
+
+  private func drawLines() {
+    let renderer = UIGraphicsImageRenderer(size: CGSize(width: 512, height: 512))
+    let image = renderer.image { context in
+      context.cgContext.translateBy(x: 256, y: 256)
+      var first = true
+      var lenght: CGFloat = 256
+      for _ in 0 ..< 256 {
+        context.cgContext.rotate(by: .pi / 2)
+        if first {
+          context.cgContext.move(to: CGPoint(x: lenght, y: 50))
+          first = false
+        } else {
+          context.cgContext.addLine(to: CGPoint(x: lenght, y: 50))
+        }
+        lenght *= 0.99
+      }
+      context.cgContext.setStrokeColor(UIColor.cyan.cgColor)
+      context.cgContext.strokePath()
     }
     imageView.image = image
   }
@@ -74,8 +112,12 @@ class ViewController: UIViewController {
       drawRectangle()
     case 1:
       drawCircle()
-    case 3:
+    case 2:
       drawCheckerboard()
+    case 3:
+      drawRotatedSquares()
+    case 4:
+      drawLines()
     default:
       break
     }
