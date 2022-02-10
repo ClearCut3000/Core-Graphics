@@ -106,10 +106,10 @@ class ViewController: UIViewController {
     let image = renderer.image { context in
       let paragraphStyle = NSMutableParagraphStyle()
       paragraphStyle.alignment = .center
-    let attributesOfString: [NSAttributedString.Key: Any] = [
-      .font: UIFont.systemFont(ofSize: 36),
-      .paragraphStyle: paragraphStyle
-    ]
+      let attributesOfString: [NSAttributedString.Key: Any] = [
+        .font: UIFont.systemFont(ofSize: 36),
+        .paragraphStyle: paragraphStyle
+      ]
       let string = "The best-laid schemes o'\nmice an' men gang aft agley"
       let attributedString = NSAttributedString(string: string, attributes: attributesOfString)
       attributedString.draw(with: CGRect(x: 32, y: 32, width: 448, height: 448), options: .usesLineFragmentOrigin, context: nil)
@@ -119,10 +119,71 @@ class ViewController: UIViewController {
     imageView.image = image
   }
 
+  private func  drawEmoji() {
+    //⭐️
+    let renderer = UIGraphicsImageRenderer(size: CGSize(width: 512, height: 512))
+    func getPath() -> UIBezierPath {
+      let path = UIBezierPath()
+      path.move(to: CGPoint(x: 256, y: 112))
+      path.addLine(to: CGPoint(x: 290, y: 184))
+      path.addLine(to: CGPoint(x: 366, y: 184))
+      path.addLine(to: CGPoint(x: 311, y: 252))
+      path.addLine(to: CGPoint(x: 324, y: 332))
+      path.addLine(to: CGPoint(x: 256, y: 294))
+      path.addLine(to: CGPoint(x: 188, y: 332))
+      path.addLine(to: CGPoint(x: 201, y: 252))
+      path.addLine(to: CGPoint(x: 146, y: 184))
+      path.addLine(to: CGPoint(x: 222, y: 184))
+      path.close()
+      return path
+    }
+    let image = renderer.image { context in
+      context.cgContext.setFillColor(UIColor.yellow.cgColor)
+      context.cgContext.addPath(getPath().cgPath)
+      context.cgContext.drawPath(using: .fill)
+    }
+    imageView.image = image
+  }
+
+  private func drawTwin() {
+    let renderer = UIGraphicsImageRenderer(size: CGSize(width: 512, height: 512))
+    let image = renderer.image { context in
+      context.cgContext.setStrokeColor(UIColor.cyan.cgColor)
+      context.cgContext.setLineWidth(5)
+      // Letter T
+      context.cgContext.move(to: CGPoint(x: 70, y: 210))
+      context.cgContext.addLine(to: CGPoint(x: 146, y: 210))
+      context.cgContext.move(to: CGPoint(x: 110, y: 210))
+      context.cgContext.addLine(to: CGPoint(x: 110, y: 290))
+      //Letter W
+      context.cgContext.move(to: CGPoint(x: 161, y: 210))
+      context.cgContext.addLine(to: CGPoint(x: 186, y: 290))
+      context.cgContext.move(to: CGPoint(x: 186, y: 290))
+      context.cgContext.addLine(to: CGPoint(x: 214, y: 210))
+      context.cgContext.move(to: CGPoint(x: 214, y: 210))
+      context.cgContext.addLine(to: CGPoint(x: 239, y: 290))
+      context.cgContext.move(to: CGPoint(x: 239, y: 290))
+      context.cgContext.addLine(to: CGPoint(x: 267, y: 210))
+      //Letter I
+      context.cgContext.move(to: CGPoint(x: 291, y: 210))
+      context.cgContext.addLine(to: CGPoint(x: 291, y: 290))
+      //Letter N
+      context.cgContext.move(to: CGPoint(x: 326, y: 210))
+      context.cgContext.addLine(to: CGPoint(x: 326, y: 290))
+      context.cgContext.move(to: CGPoint(x: 326, y: 210))
+      context.cgContext.addLine(to: CGPoint(x: 387, y: 290))
+      context.cgContext.move(to: CGPoint(x: 387, y: 210))
+      context.cgContext.addLine(to: CGPoint(x: 387, y: 290))
+      //End
+      context.cgContext.drawPath(using: .fillStroke)
+    }
+    imageView.image = image
+  }
+
   //MARK: - Actions
   @IBAction func redrawTapped(_ sender: UIButton) {
     currentDrawType += 1
-    if currentDrawType > 5 {
+    if currentDrawType > 7 {
       currentDrawType = 0
     }
     switch currentDrawType {
@@ -138,6 +199,10 @@ class ViewController: UIViewController {
       drawLines()
     case 5:
       drawImagesAndText()
+    case 6:
+      drawEmoji()
+    case 7:
+      drawTwin()
     default:
       break
     }

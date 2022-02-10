@@ -13,6 +13,7 @@
 		361DF8F527B4015800DEBC00 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 361DF8F327B4015800DEBC00 /* Main.storyboard */; };
 		361DF8F727B4015D00DEBC00 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 361DF8F627B4015D00DEBC00 /* Assets.xcassets */; };
 		361DF8FA27B4015D00DEBC00 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 361DF8F827B4015D00DEBC00 /* LaunchScreen.storyboard */; };
+		36AC7D6127B5A8DD0085812A /* scr.gif in Resources */ = {isa = PBXBuildFile; fileRef = 36AC7D6027B5A8DD0085812A /* scr.gif */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		361DF8F627B4015D00DEBC00 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		361DF8F927B4015D00DEBC00 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		361DF8FB27B4015D00DEBC00 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		36AC7D6027B5A8DD0085812A /* scr.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = scr.gif; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -40,6 +42,7 @@
 		361DF8E127B4015800DEBC00 = {
 			isa = PBXGroup;
 			children = (
+				36AC7D5F27B5A8540085812A /* Screenshots */,
 				361DF8EC27B4015800DEBC00 /* Core Graphics */,
 				361DF8EB27B4015800DEBC00 /* Products */,
 			);
@@ -65,6 +68,14 @@
 				361DF8FB27B4015D00DEBC00 /* Info.plist */,
 			);
 			path = "Core Graphics";
+			sourceTree = "<group>";
+		};
+		36AC7D5F27B5A8540085812A /* Screenshots */ = {
+			isa = PBXGroup;
+			children = (
+				36AC7D6027B5A8DD0085812A /* scr.gif */,
+			);
+			path = Screenshots;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -128,6 +139,7 @@
 				361DF8FA27B4015D00DEBC00 /* LaunchScreen.storyboard in Resources */,
 				361DF8F727B4015D00DEBC00 /* Assets.xcassets in Resources */,
 				361DF8F527B4015800DEBC00 /* Main.storyboard in Resources */,
+				36AC7D6127B5A8DD0085812A /* scr.gif in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
